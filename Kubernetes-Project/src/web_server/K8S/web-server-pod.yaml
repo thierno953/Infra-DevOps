@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: web-server
+  labels: 
+    app: web-server
+spec:
+  containers:
+    - name: web-server
+      image: thiernos/k8s-web-server:1.0

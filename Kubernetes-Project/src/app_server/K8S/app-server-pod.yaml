@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app-server
+  labels: 
+    app: app-server
+spec:
+  containers:
+    - name: app-server
+      image: thiernos/k8s-app-server:1.1 

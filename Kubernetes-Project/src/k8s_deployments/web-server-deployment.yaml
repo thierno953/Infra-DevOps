@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-server-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels: 
+      app: web-server
+  template:
+    metadata:
+      name: web-server
+      labels: 
+        app: web-server
+    spec:
+      containers:
+        - name: web-server
+          image: thiernos/k8s-web-server:1.0
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-server-service
+spec:
+  type: NodePort
+  selector:
+    app: web-server
+  ports:
+    - port: 80        # Port expose on local machine
+      targetPort: 80  # Port exposed in Container
+      nodePort: 30080 # 30000 - 32767
